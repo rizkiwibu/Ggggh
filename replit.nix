@@ -6,5 +6,10 @@
 		libpng
 		libjpeg
 		libuuid
+        libwebp
+        ffmpeg
+        imagemagick
+        python
+        git
 	];
 }

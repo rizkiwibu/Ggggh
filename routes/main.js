@@ -31,7 +31,7 @@ function checkAuth(req, res, next) {
         res.set('Cache-Control', 'no-cache, private, no-store, must-revalidate, post-check=0, pre-check=0');
         next();
     } else {
-        req.flash('error_messages', "Please Login to continue !");
+        req.flash('error_messages', "Silahkan masuk untuk melanjutkan !");
         res.redirect('/login');
     }
 }

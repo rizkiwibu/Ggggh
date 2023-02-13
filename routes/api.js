@@ -794,7 +794,7 @@ router.get('/api/soundoftext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	var lan = req.query.lang
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
-	if (!lan ) return res.json({ status : false, creator : `${creator}`, message : "[!] sila letak format lang dengan betul cek web site https://soundoftext.com/docs untuk lihat code lang"})   
+	if (!lan ) return res.json({ status : false, creator : `${creator}`, message : "[!] sila letak format lang dengan benar cek web site https://soundoftext.com/docs untuk lihat code lang"})   
 
 textto.sounds.create({ text: text1, voice: lan })
 .then(soundUrl => {
@@ -1145,7 +1145,7 @@ router.get('/api/maker/circle', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 	const hasil =  await Canvacord.Canvas.circle(text);
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
@@ -1158,7 +1158,7 @@ router.get('/api/maker/beautiful', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 	const hasil =  await Canvacord.Canvas.beautiful(text);
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
@@ -1170,7 +1170,7 @@ router.get('/api/maker/blur', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 	const hasil =  await Canvacord.Canvas.blur(text)
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
@@ -1187,8 +1187,8 @@ router.get('/api/maker/darkness', cekKey, async (req, res) => {
 
 	var img = await isImageURL(text)
 	var n = isNumber(no)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
-	if ( !n ) return res.json({ status : false, creator : 'Alip', message : "[!] parameter no nombor sahaja"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
+	if ( !n ) return res.json({ status : false, creator : 'Ikyy', message : "[!] parameter no nomor saja"}) 
 
 	const hasil =  await Canvacord.Canvas.darkness(text,shortText(no, 3))
 	limitapikey(req.query.apikey)
@@ -1200,7 +1200,7 @@ router.get('/api/maker/facepalm', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.facepalm(text)
 	limitapikey(req.query.apikey)
@@ -1213,7 +1213,7 @@ router.get('/api/maker/invert', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.invert(text)
 	limitapikey(req.query.apikey)
@@ -1230,8 +1230,8 @@ router.get('/api/maker/pixelate', cekKey, async (req, res) => {
 
 	var img = await isImageURL(text)
 	var n = isNumber(no)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
-	if ( !n ) return res.json({ status : false, creator : 'Alip', message : "[!] parameter no nombor sahaja"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
+	if ( !n ) return res.json({ status : false, creator : 'Ikyy', message : "[!] parameter no nomor saja"}) 
 
 	const hasil =  await Canvacord.Canvas.pixelate(text,convertStringToNumber(no))
 	limitapikey(req.query.apikey)
@@ -1245,7 +1245,7 @@ router.get('/api/maker/rainbow', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.rainbow(text)
 	limitapikey(req.query.apikey)
@@ -1271,9 +1271,9 @@ router.get('/api/maker/resize', cekKey, async (req, res) => {
 	var img = await isImageURL(text)
 	var wid = isNumber(width)
 	var hei = isNumber(height)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
-	if ( !wid ) return res.json({ status : false, creator : 'Alip', message : "[!] parameter width nombor sahaja"}) 
-	if ( !hei ) return res.json({ status : false, creator : 'Alip', message : "[!] parameter height nombor sahaja"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
+	if ( !wid ) return res.json({ status : false, creator : 'Ikyy', message : "[!] parameter width nomor saja"}) 
+	if ( !hei ) return res.json({ status : false, creator : 'Ikyy', message : "[!] parameter height nomor saja"}) 
 
 	const hasil =  await Canvacord.Canvas.resize(text, convertStringToNumber(w),  convertStringToNumber(h))
 	limitapikey(req.query.apikey)
@@ -1286,7 +1286,7 @@ router.get('/api/maker/trigger', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.trigger(text)
 	limitapikey(req.query.apikey)
@@ -1299,7 +1299,7 @@ router.get('/api/maker/wanted', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.wanted(text)
 	limitapikey(req.query.apikey)
@@ -1312,7 +1312,7 @@ router.get('/api/maker/wasted', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
-	if ( !img ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image"}) 
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
 
 	const hasil =  await Canvacord.Canvas.wasted(text)
 	limitapikey(req.query.apikey)
@@ -1444,14 +1444,14 @@ router.get('/api/maker/welcome1', cekKey, async (req, res, next) => {
 	var imgpp = await isImageURL(pp)
 	var bgimg = await isImageURL(bg)
 
-    if (!name ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter name"})  
-	if (!grup ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter gpname"})  
-    if (!member ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter member"})  
-	if (!pp ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter pp"})  
-    if (!bg ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter bg"})  
+    if (!name ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter name"})  
+	if (!grup ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter gpname"})  
+    if (!member ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter member"})  
+	if (!pp ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter pp"})  
+    if (!bg ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter bg"})  
 
-	if ( !imgpp ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image pp"}) 
-	if ( !bgimg ) return res.json({ status : false, creator : 'Alip', message : "[!] cek kembali url image bg"}) 
+	if ( !imgpp ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image pp"}) 
+	if ( !bgimg ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image bg"}) 
    
     Canvas.registerFont('./asset/font/Creme.ttf', { family: 'creme' })
 
@@ -1516,14 +1516,14 @@ router.get('/api/maker/goodbye1', cekKey, async (req, res, next) => {
 	var imgpp = await isImageURL(pp)
 	var bgimg = await isImageURL(bg)
 
-    if (!name ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter name"})  
-	if (!grup ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter gpname"})  
-    if (!member ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter member"})  
-    if (!bg ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter bg"})  
-	if (!pp) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter pp"}) 
+    if (!name ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter name"})  
+	if (!grup ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter gpname"})  
+    if (!member ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter member"})  
+    if (!bg ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter bg"})  
+	if (!pp) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter pp"}) 
    
-	if ( !imgpp ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter pp Link pp dengan betul"}) 
-	if ( !bgimg ) return res.json({ status : false, creator : 'Alip', message : "[!] masukan parameter pp Link bg dengan betul"}) 
+	if ( !imgpp ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter pp Link pp dengan benar"}) 
+	if ( !bgimg ) return res.json({ status : false, creator : 'Ikyy', message : "[!] masukan parameter pp Link bg dengan benar"}) 
 
     Canvas.registerFont('./asset/font/Creme.ttf', { family: 'creme' })
 
@@ -1584,7 +1584,7 @@ router.get('/api/linkshort/tinyurl', cekKey, async (req, res, next) => {
 	if (!link ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter link"})  
 
     var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 
 TinyURL.shorten(link, function(link, err) {
@@ -1606,7 +1606,7 @@ router.get('/api/linkshort/tinyurlwithalias', cekKey, async (req, res, next) => 
 	if (!alias ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter alias"})  
 
     var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 	const data = { 'url': link, 'alias': shortText(alias, 30) }
 
@@ -1625,7 +1625,7 @@ router.get('/api/linkshort/cuttly', cekKey, async (req, res, next) => {
 	var link = req.query.link
 	if (!link ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter link"})  
     var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 	let randomapicuttly = apicuttly[Math.floor(Math.random() * apicuttly.length)]
 	var hasil = await fetchJson(`https://cutt.ly/api/api.php?key=${randomapicuttly}&short=${link}`)
@@ -1644,7 +1644,7 @@ router.get('/api/linkshort/bitly', cekKey, async (req, res, next) => {
 	if (!link ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter link"})  
 
 	var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 	let randomapibitly = apibitly[Math.floor(Math.random() * apibitly.length)]
 	const bitly = new BitlyClient(randomapibitly)
@@ -1703,7 +1703,7 @@ router.get('/api/info/translate', cekKey, async (req, res, next) => {
     var lang = req.query.lang
 
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
-	if (!lang ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter lang.  boleh lihat list bahasa di https://cloud.google.com/translate/docs/languages"})  
+	if (!lang ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter lang.  bisa lihat list bahasa di https://cloud.google.com/translate/docs/languages"})  
 
 	translate(text, {to: lang}).then(data => {
 		limitapikey(req.query.apikey)
@@ -1713,7 +1713,7 @@ router.get('/api/info/translate', cekKey, async (req, res, next) => {
 			result: data
 		})
 	}).catch(err => {
-		res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter lang Dengan Betul.  boleh lihat list bahasa di https://cloud.google.com/translate/docs/languages"})
+		res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter lang Dengan benar.  bisa lihat list bahasa di https://cloud.google.com/translate/docs/languages"})
 	})
         
 })
@@ -1722,7 +1722,7 @@ router.get('/api/info/emoji', cekKey, async (req, res, next) => {
 	var emoji1 = req.query.emoji
 	if (!emoji1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter emoji"})
       var hasil = emoji.get(emoji1)
-       if (hasil == null) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter emoji dengan 1 emoji sahaja"})
+       if (hasil == null) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter emoji dengan 1 emoji saja"})
            limitapikey(req.query.apikey)
            res.json({
 			status: true,
@@ -1805,7 +1805,7 @@ router.get('/api/tools/ssweb', cekKey, async (req, res, next) => {
 	if (!link ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter link"})  
 
 	var islink = isUrl(link)
-	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url sahaja"})  
+	if (!islink ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url saja"})  
 
 
 	alip.ssweb(link).then((data) =>{ 

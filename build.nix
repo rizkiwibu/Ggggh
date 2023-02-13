@@ -8,6 +8,7 @@ stdenv.mkDerivation {
     libpng
 		libjpeg
     libuuid
+        libwebp
   ];
 	
   shellHook = ''
