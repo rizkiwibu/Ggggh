@@ -102,7 +102,7 @@ module.exports.sendResetEmail = async (email, token) => {
     <body style="background-color: #e9ecef;">
     
       <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-        A preheader is the short summary text that follows the subject line when an email is viewed in the inbox.
+        Mereset Kata Sandi Anda Untuk Membuka Akun Anda
       </div>
 
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
@@ -303,7 +303,7 @@ module.exports.sendVerifyEmail = async (email, token) => {
     <body style="background-color: #e9ecef;">
     
       <div class="preheader" style="display: none; max-width: 0; max-height: 0; overflow: hidden; font-size: 1px; line-height: 1px; color: #fff; opacity: 0;">
-        Sahkan E-mel Anda Dengan klik Buton Di Bawah.
+        Verifikasi Email Anda
       </div>
 
       <table border="0" cellpadding="0" cellspacing="0" width="100%">
