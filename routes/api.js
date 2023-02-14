@@ -1848,17 +1848,16 @@ var openai = new OpenAIApi(configuration);
 		})
 .catch((err) =>{
  res.json({
- 	status: false
-     creator: `${creator}`,
-     result: `error`,
-     message: `maintenanced by ${creator}`
+ 	status: false,
+     result: `error`
+     message: `error`
 })
+)}
 .catch(e => {
 			 res.json({
-     status: false
-     creator: `${creator}`,
-     result: `error`,
-     message: `maintenanced by ${creator}`
+     status: false,
+     result: `error`
+     message: `error`
 })
 				
 })
