@@ -74,6 +74,7 @@
     "passport-local": "^1.0.0",
     "password-validator": "^5.3.0",
     "path": "^0.12.7",
+    "pm2": "^5.2.2",
     "qs": "^6.10.3",
     "secure": "^0.0.1",
     "serve-favicon": "^2.5.0",

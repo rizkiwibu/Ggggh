@@ -1825,11 +1825,11 @@ router.get('/api/tools/openai', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
 	if (text1.length > 2048) return res.json({ status : false, creator : `${creator}`, message : "[!] Maximal 2.048 String!"})
-	const configuration = new Configuration({
+	var configuration = new Configuration({
     apiKey: openaikey
 });
-const openai = new OpenAIApi(configuration);
-        const response = await openai.createCompletion({
+var openai = new OpenAIApi(configuration);
+        var response = await openai.createCompletion({
             model: "text-davinci-003",
             prompt: text1,
             temperature: 0,
@@ -1846,10 +1846,21 @@ const openai = new OpenAIApi(configuration);
 			result: `success`,
             message: response.data.choices[0].text
 		})
-.catch(function(error) {
-	 res.json(loghandler.error)
-});
-
+.catch((err) =>{
+ res.json({
+ 	status: false
+     creator: `${creator}`,
+     result: `error`,
+     message: `maintenanced by ${creator}`
+})
+.catch(e => {
+			 res.json({
+     status: false
+     creator: `${creator}`,
+     result: `error`,
+     message: `maintenanced by ${creator}`
+})
+				
 })
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
