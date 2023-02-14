@@ -52,6 +52,8 @@ apibitly = ['6cfc18e9bfa554714fadc10a1f6aff7555642348','2243940c230ad0d748059aee
 recaptcha_key_1 = '6Ldw8XckAAAAAEH5CxbddB_ZCopUskCH7uEcgqgG'
 recaptcha_key_2 = '6Ldw8XckAAAAANu1ofduSj5E4biO3HJp7Oj286sF'
 
+openaikey = process.env.openai
+
 //_______________________ ┏  Loghandler  ┓ _______________________\\
 
 loghandler = {

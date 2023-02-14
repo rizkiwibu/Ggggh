@@ -4,6 +4,7 @@ require('../settings')
 const express = require('express')
 const translate = require('translate-google')
 const alip = require("../lib/listdl")
+const { Configuration, OpenAIApi } = require("openai");
 const textto = require('soundoftext-js')
 const googleIt = require('google-it')
 const { shortText } = require("limit-text-js")
@@ -55,9 +56,9 @@ async function cekKey(req, res, next) {
 
     let db = await User.findOne({apikey: apikey});
     if(db === null) {
-		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Tidak Wujud"})  
+		return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Tidak Valid"})  
 		} else if(!db.isVerified) {
-				return res.json({ status : false, creator : `${creator}`, message : "[!] Sila Verify Email dulu sebelum guna apikey"})  
+				return res.json({ status : false, creator : `${creator}`, message : "[!] Harap verifikasi email terlebih dahulu sebelum menggunakan apikey"})  
 			} else if(db.limitApikey === 0) {
 				return res.json({ status : false, creator : `${creator}`, message : "[!] Apikey Sudah Habis"})  
 			}else{
@@ -1819,6 +1820,34 @@ router.get('/api/tools/ssweb', cekKey, async (req, res, next) => {
 	})
 
 })
+
+router.get('/api/tools/openai', cekKey, async (req, res, next) => {
+	var text1 = req.query.text
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
+	if (text1.length > 2048) return res.json({ status : false, creator : `${creator}`, message : "[!] Maximal 2.048 String!"})
+	const configuration = new Configuration({
+    apiKey: openaikey
+});
+const openai = new OpenAIApi(configuration);
+        const response = await openai.createCompletion({
+            model: "text-davinci-003",
+            prompt: text1,
+            temperature: 0,
+            max_tokens: 3000,
+            top_p: 1,
+            frequency_penalty: 0.5,
+            presence_penalty: 0
+        });
+	limitapikey(req.query.apikey)
+
+		res.json({
+			status: true,
+			creator: `${creator}`,
+			result: `success`,
+            message: response.data.choices[0].text
+		})
+}).catch((err) =>{
+ res.json(loghandler.error)
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
