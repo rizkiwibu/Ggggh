@@ -1850,7 +1850,6 @@ const openai = new OpenAIApi(configuration);
  res.json(loghandler.error)
  
  })
- })
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
