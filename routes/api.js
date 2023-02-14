@@ -1037,6 +1037,16 @@ router.get('/api/randomgambar/dadu', cekKey, async (req, res, next) => {
 	res.send(result)
 })
 
+router.get('/api/randomgambar/loli', cekKey, async (req, res, next) => {
+
+	let loli = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/sfw/loli.json')
+	let random = loli[Math.floor(Math.random() * loli.length)]
+	var result = await getBuffer(random.url)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
 
 router.get('/api/randomgambar/coffee', cekKey, async (req, res, next) => {
 	var result = await getBuffer('https://coffee.alexflipnote.dev/random')
