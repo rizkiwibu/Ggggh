@@ -1047,6 +1047,26 @@ router.get('/api/randomgambar/loli', cekKey, async (req, res, next) => {
 	res.send(result)
 })
 
+router.get('/api/randomgambar/kayes', cekKey, async (req, res, next) => {
+
+	let kayes = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/random_image/kayes.json')
+	let random = kayes[Math.floor(Math.random() * kayes.length)]
+	var result = await getBuffer(random)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/randomgambar/cosplay', cekKey, async (req, res, next) => {
+
+	let cosplay = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/random_image/cosplay.json')
+	let random = cosplay[Math.floor(Math.random() * cosplay.length)]
+	var result = await getBuffer(random)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
 
 router.get('/api/randomgambar/coffee', cekKey, async (req, res, next) => {
 	var result = await getBuffer('https://coffee.alexflipnote.dev/random')
