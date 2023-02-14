@@ -1845,9 +1845,11 @@ const openai = new OpenAIApi(configuration);
 			creator: `${creator}`,
 			result: `success`,
             message: response.data.choices[0].text
-		}).catch((err) =>{
- res.json(loghandler.error)
-})
+		})
+.catch(function(error) {
+	 res.json(loghandler.error)
+});
+
 })
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
