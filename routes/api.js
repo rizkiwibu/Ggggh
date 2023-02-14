@@ -1846,9 +1846,6 @@ var openai = new OpenAIApi(configuration);
 			result: `success`,
             message: response.data.choices[0].text
 		})
-.catch(err => {
-		res.json({ status : false, creator : `${creator}`, result : `error`, message : "[!] Server Mengalami Kendala/Error"})
-	})
 	})
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
