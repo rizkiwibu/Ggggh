@@ -1916,9 +1916,6 @@ var openai = new OpenAIApi(configuration);
             frequency_penalty: 0.5,
             presence_penalty: 0
         });
-if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
-if (!response ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
-if (!data ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 if (!choices[0] ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 
@@ -1943,10 +1940,7 @@ var response = await openai.createImage({
   size: "512x512",
 });
 var result = await getBuffer(response.data.data[0].url)
-if (!response ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
-if (!data ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 if (!data[0] ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
-if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
