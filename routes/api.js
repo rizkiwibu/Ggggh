@@ -1902,8 +1902,7 @@ router.get('/api/tools/ssweb', cekKey, async (req, res, next) => {
 
 router.get('/api/tools/openai', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
-	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
-	if (text1.length > 2048) return res.json({ status : false, creator : `${creator}`, message : "[!] Maximal 2.048 String!"})
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
 	var configuration = new Configuration({
     apiKey: openaikey
 });
@@ -1917,6 +1916,10 @@ var openai = new OpenAIApi(configuration);
             frequency_penalty: 0.5,
             presence_penalty: 0
         });
+if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!response ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!data ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!choices[0] ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 
 		res.json({
@@ -1940,11 +1943,13 @@ var response = await openai.createImage({
   size: "512x512",
 });
 var result = await getBuffer(response.data.data[0].url)
+if (!response ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!data ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!data[0] ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
-}).catch((err) =>{
-	 res.json(loghandler.notfound)
 })
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
