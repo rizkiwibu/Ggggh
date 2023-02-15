@@ -1107,11 +1107,11 @@ router.get('/api/randomgambar/cogan', cekKey, async (req, res, next) => {
 	res.send(result)
 })
 
-router.get('/api/randomgambar/hijab', cekKey, async (req, res, next) => {
+router.get('/api/randomgambar/rose', cekKey, async (req, res, next) => {
 
-	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/asupan/hijaber.json')
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/random_image/rose.json')
 	let random = data[Math.floor(Math.random() * data.length)]
-	var result = await getBuffer(random.url)
+	var result = await getBuffer(random)
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
