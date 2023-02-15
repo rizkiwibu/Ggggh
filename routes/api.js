@@ -1943,6 +1943,8 @@ var result = await getBuffer(response.data.data[0].url)
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
+}).catch((err) =>{
+	 res.json(loghandler.notfound)
 })
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
