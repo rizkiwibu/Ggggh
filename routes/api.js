@@ -1939,7 +1939,7 @@ var response = await openai.createImage({
   n: 1,
   size: "512x512",
 });
-var result = await getBuffer(response.data.data[0].url;)
+var result = await getBuffer(response.data.data[0].url)
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
