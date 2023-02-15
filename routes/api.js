@@ -1067,6 +1067,55 @@ router.get('/api/randomgambar/cosplay', cekKey, async (req, res, next) => {
 	res.send(result)
 })
 
+router.get('/api/randomgambar/notnot', cekKey, async (req, res, next) => {
+
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/random_image/notnot.json')
+	let random = data[Math.floor(Math.random() * data.length)]
+	var result = await getBuffer(random)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/randomgambar/hacker', cekKey, async (req, res, next) => {
+
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/random_image/hekel.json')
+	let random = data[Math.floor(Math.random() * data.length)]
+	var result = await getBuffer(random)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/randomgambar/cecan', cekKey, async (req, res, next) => {
+
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/cecan/random.json')
+	let random = data[Math.floor(Math.random() * data.length)]
+	var result = await getBuffer(random.url)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/randomgambar/cogan', cekKey, async (req, res, next) => {
+
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/cogan/random.json')
+	let random = data[Math.floor(Math.random() * data.length)]
+	var result = await getBuffer(random.url)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/randomgambar/hijab', cekKey, async (req, res, next) => {
+
+	let data = await fetchJson('https://raw.githubusercontent.com/diki6969/data-danzzapi.xyz/main/asupan/hijaber.json')
+	let random = data[Math.floor(Math.random() * data.length)]
+	var result = await getBuffer(random.url)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
 
 router.get('/api/randomgambar/coffee', cekKey, async (req, res, next) => {
 	var result = await getBuffer('https://coffee.alexflipnote.dev/random')
@@ -1877,6 +1926,24 @@ var openai = new OpenAIApi(configuration);
             message: response.data.choices[0].text
 		})
 	})
+	
+router.get('/api/tools/drawai', cekKey, async (req, res, next) => {
+	var text1 = req.query.text
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
+	var configuration = new Configuration({
+    apiKey: openaikey
+});
+var openai = new OpenAIApi(configuration);
+var response = await openai.createImage({
+  prompt: text1,
+  n: 1,
+  size: "512x512",
+});
+var result = await getBuffer(response.data.data[0].url;)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
