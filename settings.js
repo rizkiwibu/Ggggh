@@ -21,20 +21,20 @@ require('dotenv').config()
 
 creator = '𖣘𝑰𝑲𝒀𝒀𝑶𝑭𝑪₴' // Nama 
 port = 8080 //port host
-LimitApikey = 1000000 // Limit Apikey default
+LimitApikey = 999999999999 // Limit Apikey default
 
 //___________ ┏  Database Mongodb Setting  ┓ ___________\\
 
-keymongodb = 'mongodb+srv://Ikyy556:KucingLari16@ikyy.qwyawka.mongodb.net/?retryWrites=true&w=majority'
+keymongodb = 'mongodb+srv://Kyyrest:KucingLari16@kyyrest.fvixvhl.mongodb.net/?retryWrites=true&w=majority'
 
 //___________ ┏  SMTP Setting  ┓ ___________\\
 
 //note service SMTP Gmail Tidak Boleh Send Kat Temp Email Kalau mahu pakai temp email buat di service lain
 usetempemail = false // kalau true boleh sing up pakai email temp kalau pakai service gmail pakai false je 
 servicesmtp = 'SendinBlue'//Ada gmail ada sendinblue ikut masing2 limit gmail 500 limit sendinblue 300 free. List service smtp : https://nodemailer.com/smtp/well-known/
-sendemail = 'gendonmenjeng@gmail.com' //Email SMTP
-fromsendemail = 'gendonmenjeng@gmail.com' // From Email SMTP *kalau takde custom email kena sama email dengan Email SMTP
-sendpwmail = 'rSL6wXnWZBYPkmsa' // Password Email SMTP
+sendemail = 'apirestikyy@gmail.com' //Email SMTP
+fromsendemail = 'apirestikyy@gmail.com' // From Email SMTP *kalau takde custom email kena sama email dengan Email SMTP
+sendpwmail = 'BZY21ILngtsfCjxv' // Password Email SMTP
 domain = 'kyyrest.diki6969.repl.co'// domain website tanpa http or https
 
 //_______________________ ┏  Apikey  ┓ _______________________\\
