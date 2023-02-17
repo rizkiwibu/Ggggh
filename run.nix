@@ -7,6 +7,8 @@ with pkgs; mkShell {
   APPEND_LIBRARY_PATH = "${lib.makeLibraryPath [ libGL libuuid ]}";
   shellHook = ''
     export LD_LIBRARY_PATH="$APPEND_LIBRARY_PATH:$LD_LIBRARY_PATH"
+		npm i
+
 		npm start
   '';
 
