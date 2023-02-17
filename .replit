@@ -1,5 +1,5 @@
 
-run = "nix-shell build.nix"
+run = "node server.js"
 entrypoint = "index.js"
 
 language = "nodejs"
