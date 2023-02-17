@@ -1928,6 +1928,19 @@ if (!text ) return res.json({ status : false, creator : `${creator}`, message : 
 		})
 	})
 	
+router.get('/api/tools/simi', cekKey, async (req, res, next) => {
+	var text = req.query.text
+	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})  
+	let hasil = await fetchJson(`https://api.lolhuman.xyz/api/simi?apikey=SGWN&text=${text}&badword=true`)
+	limitapikey(req.query.apikey)
+
+	res.json({
+	status: true,
+	creator: `${creator}`,
+	result: hasil.result
+	})
+
+})
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
@@ -1990,7 +2003,7 @@ router.get('/api/islamic/tafsirsurah', cekKey, async (req, res, next) => {
 
 //  PROCESSING IMAGE
 
-router.get('/api/processing/drawai', cekKey, async (req, res, next) => {
+router.get('/api/processing/drawai', cekKey, async (req, res) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
 	var configuration = new Configuration({
@@ -2010,12 +2023,25 @@ if (!url ) return res.json({ status : false, creator : `${creator}`, message : "
 	res.send(result)
 })
 
-router.get('/api/processing/toanime', cekKey, async (req, res, next) => {
+router.get('/api/processing/toanime', cekKey, async (req, res) => {
 	var text = req.query.url
 	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
 	var img = await isImageURL(text)
 	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
     var proses = 'https://api.lolhuman.xyz/api/imagetoanime?apikey=SGWN&img=' +text
+    if (!proses ) return res.json({ status : false, creator : `${creator}`, message : "[!] Error"})
+	var result = await getBuffer(proses)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/processing/nobg', cekKey, async (req, res) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
+    var proses = 'https://api.lolhuman.xyz/api/removebg?apikey=SGWN&img=' +text
     if (!proses ) return res.json({ status : false, creator : `${creator}`, message : "[!] Error"})
 	var result = await getBuffer(proses)
 	limitapikey(req.query.apikey)
