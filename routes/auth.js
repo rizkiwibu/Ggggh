@@ -187,7 +187,7 @@ router.get('/send-verification-email', checkAuth, async (req, res) => {
             req.flash('error_messages','Kesalahan Harap Coba Lagi Besok');
             res.redirect('/docs');
         }else{
-        req.flash('success_messages', 'Selesai Terkirim Tautan Email Kedaluwarsa Setelah 30 menit.')
+        req.flash('success_messages', 'Selesai Terkirim Tautan Email Kedaluwarsa Setelah 30 menit. Tunggu Sekitar 5-10 menit.')
         res.redirect('/docs');
         }
 
