@@ -1928,25 +1928,6 @@ if (!text ) return res.json({ status : false, creator : `${creator}`, message : 
 		})
 	})
 	
-router.get('/api/tools/drawai', cekKey, async (req, res, next) => {
-	var text1 = req.query.text
-	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
-	var configuration = new Configuration({
-    apiKey: openaikey
-});
-var openai = new OpenAIApi(configuration);
-var response = await openai.createImage({
-  prompt: text1,
-  n: 1,
-  size: "512x512",
-});
-var url = response.data.data[0].url
-var result = await getBuffer(url)
-if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
-	limitapikey(req.query.apikey)
-	res.set({'Content-Type': 'image/png'})
-	res.send(result)
-})
 
 router.get('/api/tools/styletext', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
@@ -2005,6 +1986,41 @@ router.get('/api/islamic/tafsirsurah', cekKey, async (req, res, next) => {
  res.json(loghandler.error)
 
 })
+})
+
+//  PROCESSING IMAGE
+
+router.get('/api/processing/drawai', cekKey, async (req, res, next) => {
+	var text1 = req.query.text
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
+	var configuration = new Configuration({
+    apiKey: openaikey
+});
+var openai = new OpenAIApi(configuration);
+var response = await openai.createImage({
+  prompt: text1,
+  n: 1,
+  size: "512x512",
+});
+var url = response.data.data[0].url
+var result = await getBuffer(url)
+if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
+})
+
+router.get('/api/processing/toanime', cekKey, async (req, res, next) => {
+	var text = req.query.url
+	if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter url"})
+	var img = await isImageURL(text)
+	if ( !img ) return res.json({ status : false, creator : 'Ikyy', message : "[!] cek kembali url image"}) 
+    var proses = 'https://api.lolhuman.xyz/api/imagetoanime?apikey=SGWN&img=' +text
+    if (!proses ) return res.json({ status : false, creator : `${creator}`, message : "[!] Error"})
+	var result = await getBuffer(proses)
+	limitapikey(req.query.apikey)
+	res.set({'Content-Type': 'image/png'})
+	res.send(result)
 })
 
 module.exports = router
