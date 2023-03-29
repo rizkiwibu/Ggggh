@@ -1900,6 +1900,30 @@ router.get('/api/tools/ssweb', cekKey, async (req, res, next) => {
 
 })
 
+router.get('/api/tools/gpturbo', cekKey, async (req, res, next) => {
+        var command = req.query.command
+	var text1 = req.query.text
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
+        const configuration = new Configuration({
+  apiKey: openaikey,
+});
+const openai = new OpenAIApi(configuration);
+
+const completion = await openai.createChatCompletion({
+  model: "gpt-3.5-turbo",
+  messages: [
+          {role: "system", content: command},
+          {role: "user", content: text1}
+          ],
+});
+var hasil = completion.data.choices[0].message.content
+res.json({
+			status: true,
+			creator: `${creator}`,
+			result: `success`,
+            message: hasil
+		})
+	})
 router.get('/api/tools/openai', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
