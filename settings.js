@@ -51,9 +51,6 @@ apibitly = ['6cfc18e9bfa554714fadc10a1f6aff7555642348','2243940c230ad0d748059aee
 //APIKEY RECAPTCHA From https://www.google.com/recaptcha/about/ or https://www.google.com/recaptcha/admin  \\
 recaptcha_key_1 = '6Ldw8XckAAAAAEH5CxbddB_ZCopUskCH7uEcgqgG'
 recaptcha_key_2 = '6Ldw8XckAAAAANu1ofduSj5E4biO3HJp7Oj286sF'
-let ikyykey = await fetch(`https://apikey.diki6969.repl.co/`)
-let dik = await ikyykey.json()
-openaikey = dik.key
 
 //_______________________ ┏  Loghandler  ┓ _______________________\\
 

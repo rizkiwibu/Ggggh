@@ -1905,7 +1905,7 @@ router.get('/api/tools/gpturbo', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
         const configuration = new Configuration({
-  apiKey: openaikey,
+  apiKey: process.env.OPENAI_KEY,
 });
 const openai = new OpenAIApi(configuration);
 
@@ -1928,7 +1928,7 @@ router.get('/api/tools/openai', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
 	var configuration = new Configuration({
-    apiKey: openaikey
+    apiKey: process.env.OPENAI_KEY,
 });
 var openai = new OpenAIApi(configuration);
         var response = await openai.createCompletion({
