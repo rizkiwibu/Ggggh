@@ -1904,19 +1904,29 @@ router.get('/api/tools/gpturbo', cekKey, async (req, res, next) => {
         var command = req.query.command
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
+	var key = await fetchJson('https://apikey.diki6969.repl.co/')
         const configuration = new Configuration({
-  apiKey: process.env.OPENAI_KEY,
+  apiKey: key.key,
 });
 const openai = new OpenAIApi(configuration);
 
-const completion = await openai.createChatCompletion({
+const response = await openai.createChatCompletion({
   model: "gpt-3.5-turbo",
   messages: [
           {role: "system", content: command},
           {role: "user", content: text1}
           ],
-});
-var hasil = completion.data.choices[0].message.content
+}) catch (error) {
+          if (error.response) {
+            console.log(error.response.status);
+            console.log(error.response.data);
+            console.log(`${error.response.status}\n\n${error.response.data}`);
+          } else {
+            console.log(error);
+            res.json(loghandler.error);
+          }
+        }
+var hasil = response.data.choices[0].message.content
 res.json({
 			status: true,
 			creator: `${creator}`,
@@ -1927,8 +1937,9 @@ res.json({
 router.get('/api/tools/openai', cekKey, async (req, res, next) => {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
+	var key = await fetchJson('https://apikey.diki6969.repl.co/')
 	var configuration = new Configuration({
-    apiKey: process.env.OPENAI_KEY,
+    apiKey: key.key,
 });
 var openai = new OpenAIApi(configuration);
         var response = await openai.createCompletion({
