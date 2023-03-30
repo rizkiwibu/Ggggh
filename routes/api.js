@@ -1916,7 +1916,7 @@ const response = await openai.createChatCompletion({
           {role: "system", content: command},
           {role: "user", content: text1}
           ],
-}) catch (error) {
+}).catch (error) {
           if (error.response) {
             console.log(error.response.status);
             console.log(error.response.data);
