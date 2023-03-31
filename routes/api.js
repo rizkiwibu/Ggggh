@@ -2031,9 +2031,10 @@ router.get('/api/islamic/tafsirsurah', cekKey, async (req, res, next) => {
 
 router.get('/api/processing/drawai', cekKey, async (req, res) => {
 	var text1 = req.query.text
-	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})   
+	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
+	var key = await fetchJson('https://apikey.diki6969.repl.co/')
 	var configuration = new Configuration({
-    apiKey: openaikey
+    apiKey: key.key,
 });
 var openai = new OpenAIApi(configuration);
 var response = await openai.createImage({
