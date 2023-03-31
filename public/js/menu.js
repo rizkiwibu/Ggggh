@@ -25,7 +25,7 @@
 
 //Visit
 
-$.getJSON("https://counter-gaes.diki6969.repl.co/counter", function(response) {
+$.getJSON("https://counter-gaes.diki6969.repl.co/counter/visitor", function(response) {
     $("#visitor").text(response.value);
 })
 
