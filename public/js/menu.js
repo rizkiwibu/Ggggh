@@ -25,7 +25,7 @@
 
 //Visit
 
-$.getJSON("https://api.countapi.xyz/hit/alpis.eu.org/visitor", function(response) {
+$.getJSON("https://counter-gaes.diki6969.repl.co/counter", function(response) {
     $("#visitor").text(response.value);
 })
 
