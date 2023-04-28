@@ -2055,7 +2055,7 @@ var result = await getBuffer(url)
             console.log(`${error.response.status}\n\n${error.response.data}`);
         } else {
             console.log(error);
-            m.reply(error.message);
+            res.json(loghandler.error);
         }
     }
 })
