@@ -1966,9 +1966,8 @@ var text = response.data.choices[0].text
   } catch (error) {
     console.log(error);
     if (error.response) {
-      console.log(error.response.status);
-      console.log(error.response.data);
-      conn.reply(m.chat, `${error.response.status}\n\n${error.response.data}`, m);
+      console.log(`${error.response.status}\n\n${error.response.data}`);
+      res.json(loghandler.error)
     } else {
       res.json(loghandler.error);
     }
