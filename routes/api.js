@@ -1932,7 +1932,7 @@ res.json({
       console.log(error.response.data);
       conn.reply(m.chat, `${error.response.status}\n\n${error.response.data}`, m);
     } else {
-      res.json(m.chat, `${error.message}`, m);
+      res.json(loghandler.error);
     }
   }
 	})
