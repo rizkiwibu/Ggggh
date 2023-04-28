@@ -1901,6 +1901,7 @@ router.get('/api/tools/ssweb', cekKey, async (req, res, next) => {
 })
 
 router.get('/api/tools/gpturbo', cekKey, async (req, res, next) => {
+  try {
         var command = req.query.command
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
@@ -1922,8 +1923,18 @@ res.json({
 			status: true,
 			creator: `${creator}`,
 			result: `success`,
-            message: hasil
+      message: hasil
 		})
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+      conn.reply(m.chat, `${error.response.status}\n\n${error.response.data}`, m);
+    } else {
+      res.json(m.chat, `${error.message}`, m);
+    }
+  }
 	})
 router.get('/api/tools/openai', cekKey, async (req, res, next) => {
   try {
