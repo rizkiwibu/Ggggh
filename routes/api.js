@@ -1943,14 +1943,13 @@ var openai = new OpenAIApi(configuration);
             presence_penalty: 0
         });
 var text = response.data.choices[0].text
-if (!text ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 
 		res.json({
 			status: true,
 			creator: `${creator}`,
 			result: `success`,
-            message: text
+      message: text
 		})
 	})
 	
