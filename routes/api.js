@@ -2070,7 +2070,7 @@ var result = await getBuffer(url)
   } catch (error) {
         if (error.response) {
             console.log(`${error.response.status}\n\n${error.response.data}`);
-            res.json(loghandler.error)
+            res.json(loghandler.error);
         } else {
             console.log(error);
             res.json(loghandler.error);
