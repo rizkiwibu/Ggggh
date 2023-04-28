@@ -1966,7 +1966,7 @@ var text = response.data.choices[0].text
     console.log(error);
     if (error.response) {
       console.log(`${error.response.status}\n\n${error.response.data}`);
-      res.json(loghandler.error)
+      res.json(loghandler.error);
     } else {
       res.json(loghandler.error);
     }
