@@ -2030,6 +2030,7 @@ router.get('/api/islamic/tafsirsurah', cekKey, async (req, res, next) => {
 //  PROCESSING IMAGE
 
 router.get('/api/processing/drawai', cekKey, async (req, res) => {
+  try {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
 	var key = await fetchJson('https://apikey.diki6969.repl.co/')
@@ -2044,10 +2045,19 @@ var response = await openai.createImage({
 });
 var url = response.data.data[0].url
 var result = await getBuffer(url)
-if (!url ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan perintah yang tepat"})  
 	limitapikey(req.query.apikey)
 	res.set({'Content-Type': 'image/png'})
 	res.send(result)
+  } catch (error) {
+        if (error.response) {
+            console.log(error.response.status);
+            console.log(error.response.data);
+            console.log(`${error.response.status}\n\n${error.response.data}`);
+        } else {
+            console.log(error);
+            m.reply(error.message);
+        }
+    }
 })
 
 router.get('/api/processing/toanime', cekKey, async (req, res) => {
