@@ -1926,6 +1926,7 @@ res.json({
 		})
 	})
 router.get('/api/tools/openai', cekKey, async (req, res, next) => {
+  try {
 	var text1 = req.query.text
 	if (!text1 ) return res.json({ status : false, creator : `${creator}`, message : "[!] masukan parameter text"})
 	var key = await fetchJson('https://apikey.diki6969.repl.co/')
@@ -1951,7 +1952,17 @@ var text = response.data.choices[0].text
 			result: `success`,
       message: text
 		})
-	})
+  } catch (error) {
+    console.log(error);
+    if (error.response) {
+      console.log(error.response.status);
+      console.log(error.response.data);
+      conn.reply(m.chat, `${error.response.status}\n\n${error.response.data}`, m);
+    } else {
+      res.json(loghandler.error);
+    }
+  }
+ })
 	
 router.get('/api/tools/simi', cekKey, async (req, res, next) => {
 	var text = req.query.text
